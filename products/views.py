@@ -1,6 +1,5 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Product
 
 
@@ -9,7 +8,12 @@ def get_home(request):
 
 
 def get_product(request, product_id):
-    products = Product.objects.get(id=product_id)
-    return HttpResponse(
-        f"Name: {products.name}, Price: {products.price}, Description: {products.description} "
-    )
+    product = Product.objects.get(id=product_id)
+    context = {
+        "product": {
+            "name": product.name,
+            "description": product.description,
+            "price": product.price,
+        }
+    }
+    return render(request, "product_detail.html", context)
