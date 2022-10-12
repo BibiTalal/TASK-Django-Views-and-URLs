@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <h1> Product Shop: Product's List:</h1>
+        
+
+       
+
+        {% for product in products %}
+        <div> 
+            <h3> Product Type: {{product.name}}</h3>
+            <P>  Description: {{product.description}}</P>
+            <p> Price: {{product.price}} KD</p>
+
+        </div>
+
+        {% endfor %}
+       
+       </div>
+
+    </body>
+
+
+</html>

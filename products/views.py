@@ -17,3 +17,20 @@ def get_product(request, product_id):
         }
     }
     return render(request, "product_detail.html", context)
+
+
+def get_products(request):
+    products = Product.objects.all()
+    new_products = []
+
+    for product in products:
+        new_products.append(
+            {
+                "name": product.name,
+                "price": product.price,
+                "description": product.description,
+            }
+        )
+    context = {"products": new_products}
+
+    return render(request, "product-list.html", context)
